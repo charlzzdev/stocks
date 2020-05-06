@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
-const Index = () => {
+const Search = () => {
   const [stockSymbol, setStockSymbol] = useState('GOOGL');
   const [stockData, setStockData] = useState({});
 
@@ -31,7 +31,7 @@ const Index = () => {
         </div> : `${stockSymbol} was not found.`
       }
     </div>
-  )
+  );
 }
 
-export default Index;
+export default Search;
