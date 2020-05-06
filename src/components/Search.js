@@ -1,16 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext } from 'react';
+import StockContext from '../contexts/StockContext';
 
 const Search = () => {
-  const [stockSymbol, setStockSymbol] = useState('GOOGL');
-  const [stockData, setStockData] = useState({});
-
-  useEffect(() => {
-    fetch(`https://financialmodelingprep.com/api/v3/quote/${stockSymbol}`)
-      .then(res => res.json())
-      .then(data => {
-        setStockData(data[0] || {})
-      });
-  }, [stockSymbol]);
+  const {
+    stockSymbol,
+    setStockSymbol,
+    stockData
+  } = useContext(StockContext);
 
   const handleSubmit = e => {
     e.preventDefault();
