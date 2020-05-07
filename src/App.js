@@ -8,11 +8,16 @@ const App = () => {
   const [stockData, setStockData] = useState({});
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    const fetchStockData = () => {
       fetch(`https://financialmodelingprep.com/api/v3/quote/${stockSymbol}`)
         .then(res => res.json())
-        .then(data => setStockData(data[0] || {}));
-    }, 1500);
+        .then(data => setStockData({ ...data[0], loading: false }));
+    }
+
+    setStockData({ loading: true });
+    fetchStockData();
+
+    const interval = setInterval(fetchStockData, 1500);
 
     return () => clearInterval(interval);
   }, [stockSymbol]);

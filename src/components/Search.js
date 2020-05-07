@@ -24,7 +24,7 @@ const Search = () => {
       {
         <Typography variant="h5" color="primary" align="center" id="stock-data">
           {
-            stockData.symbol ? (
+            stockData.loading ? 'loading...' : stockData.symbol ? (
               `${stockData.symbol}: ${stockData.price.toFixed(2)} (${stockData.changesPercentage.toFixed(2)}%)`
             ) : `${stockSymbol} was not found.`
           }
